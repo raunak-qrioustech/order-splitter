@@ -18,5 +18,7 @@ export class OrderEntity {
 
   executionDate?: Date;
 
+  marketStatus?: string;
+
   createdAt!: Date;
 }
