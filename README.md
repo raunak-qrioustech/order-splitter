@@ -44,17 +44,39 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Run tests
+## Run tests cURL
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+curl --location 'http://localhost:3000/orders/split' \
+--header 'Content-Type: application/json' \
+--data '{
+"userId": "user22",
+"orderType": "SELL",
+"totalAmount": 800,
+"portfolio": [
+{
+"symbol": "AAPL",
+"allocationPercentage": 50,
+"sharePrice":200
+},
+{
+"symbol": "MICR0",
+"sharePrice": 200
+},
+{
+"symbol": "MICR1",
+"sharePrice": 100
+},
+{
+"symbol": "MICR2",
+"sharePrice": 50
+},
+{
+"symbol": "MICR33",
+"sharePrice": 25
+}
+]
+}'
 ```
 
 ## Deployment

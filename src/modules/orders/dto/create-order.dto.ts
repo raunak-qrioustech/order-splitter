@@ -6,9 +6,9 @@ import {
   IsEnum,
   IsNumber,
   IsOptional,
+  IsPositive,
   IsString,
   Max,
-  Min,
   ValidateNested,
 } from 'class-validator';
 
@@ -20,11 +20,14 @@ export class PortfolioDto {
 
   @IsOptional()
   @IsNumber({}, { message: 'allocationPercentage must be a number' })
-  @Min(0, { message: 'allocationPercentage cannot be negative' })
+  @IsPositive({
+    message: 'allocationPercentage must be greater than 0',
+  })
   @Max(100, { message: 'allocationPercentage cannot exceed 100' })
   allocationPercentage?: number;
 
   @IsOptional()
+  @IsPositive({ message: 'sharePrice must be greater than 0' })
   @IsNumber({}, { message: 'sharePrice must be a number' })
   sharePrice?: number;
 }
